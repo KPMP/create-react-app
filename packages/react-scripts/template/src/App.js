@@ -57,13 +57,12 @@ class App extends Component {
             <div id="main-page">
               <Row>
                 <Col>
-                  <h1>Congrats on creating a new app for KPMP!</h1>
+                  <h2>Congrats on creating a new app for KPMP!</h2>
                 </Col>
               </Row>
               <Row>
                 <Col>
                   <h3>Developer TODOs: </h3>
-                  <br />
                   <ul>
                     <li> Create a new repository at http://gitlab.org/KPMP </li>
                     <li> Create a new branch called 'develop'</li>

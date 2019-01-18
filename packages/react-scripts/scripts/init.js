@@ -183,7 +183,7 @@ module.exports = function(
     args = ['install', '--save', verbose && '--verbose'].filter(e => e);
   }
 
-  // ****  You also need to add the dependencies here if you want them installed on project creation **** //
+  // **** You also need to add the dependencies here if you want them installed on project creation **** //
   args.push(
     'react',
     'react-dom',
