@@ -16,7 +16,7 @@ process.on('unhandledRejection', err => {
 
 const fs = require('fs-extra');
 const path = require('path');
-const chalk = require('react-dev-utils/chalk');
+const chalk = require('chalk');
 const execSync = require('child_process').execSync;
 const spawn = require('react-dev-utils/crossSpawn');
 const { defaultBrowsers } = require('react-dev-utils/browsersHelper');
@@ -85,18 +85,36 @@ module.exports = function(
   const ownPath = path.dirname(
     require.resolve(path.join(__dirname, '..', 'package.json'))
   );
+
   const appPackage = require(path.join(appPath, 'package.json'));
   const useYarn = fs.existsSync(path.join(appPath, 'yarn.lock'));
 
   // Copy over some of the devDependencies
   appPackage.dependencies = appPackage.dependencies || {};
+  // **** Add new common packages here.  If the package has a dash in the name, you need to use bracket notation **** //
+  appPackage.dependencies.redux = '4.0.1';
+  appPackage.dependencies['bootstrap-css-only'] = '4.2.1';
+  appPackage.dependencies['react-ga'] = '2.5.6';
+  appPackage.dependencies['react-redux'] = '5.1.1';
+  appPackage.dependencies['redux-thunk'] = '2.3.0';
+  appPackage.dependencies.history = '4.7.2';
+  appPackage.dependencies.reactstrap = '6.5.0';
+  appPackage.dependencies['react-router-dom'] = '4.3.1';
+  appPackage.devDependencies = {};
+  appPackage.devDependencies['node-sass-chokidar'] = '1.3.4';
+  appPackage.devDependencies['npm-run-all'] = '4.1.5';
 
   const useTypeScript = appPackage.dependencies['typescript'] != null;
 
   // Setup the script rules
   appPackage.scripts = {
-    start: 'react-scripts start',
-    build: 'react-scripts build',
+    'start-js': 'react-scripts start',
+    start: 'npm-run-all -p watch-css start-js',
+    'build-js': 'react-scripts build',
+    build: 'npm-run-all build-css build-js',
+    'build-css': 'node-sass-chokidar src/ -o src/',
+    'watch-css':
+      'npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive',
     test: 'react-scripts test',
     eject: 'react-scripts eject',
   };
@@ -164,13 +182,29 @@ module.exports = function(
     command = 'npm';
     args = ['install', '--save', verbose && '--verbose'].filter(e => e);
   }
-  args.push('react', 'react-dom');
+
+  // ****  You also need to add the dependencies here if you want them installed on project creation **** //
+  args.push(
+    'react',
+    'react-dom',
+    'redux@4.0.1',
+    'bootstrap-css-only@4.2.1',
+    'react-ga@2.5.6',
+    'react-redux@5.1.1',
+    'redux-thunk@2.3.0',
+    'history@4.7.2',
+    'reactstrap@6.5.0',
+    'react-router-dom@4.3.1',
+    'node-sass-chokidar@1.3.4',
+    'npm-run-all@4.1.5'
+  );
 
   // Install additional template dependencies, if present
   const templateDependenciesPath = path.join(
     appPath,
     '.template.dependencies.json'
   );
+
   if (fs.existsSync(templateDependenciesPath)) {
     const templateDependencies = require(templateDependenciesPath).dependencies;
     args = args.concat(
@@ -181,18 +215,12 @@ module.exports = function(
     fs.unlinkSync(templateDependenciesPath);
   }
 
-  // Install react and react-dom for backward compatibility with old CRA cli
-  // which doesn't install react and react-dom along with react-scripts
-  // or template is presetend (via --internal-testing-template)
-  if (!isReactInstalled(appPackage) || template) {
-    console.log(`Installing react and react-dom using ${command}...`);
-    console.log();
+  // Install the list of dependencies from above
 
-    const proc = spawn.sync(command, args, { stdio: 'inherit' });
-    if (proc.status !== 0) {
-      console.error(`\`${command} ${args.join(' ')}\` failed`);
-      return;
-    }
+  const proc = spawn.sync(command, args, { stdio: 'inherit' });
+  if (proc.status !== 0) {
+    console.error(`\`${command} ${args.join(' ')}\` failed`);
+    return;
   }
 
   if (useTypeScript) {
