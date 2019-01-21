@@ -8,7 +8,7 @@
 
 'use strict';
 
-const chalk = require('react-dev-utils/chalk');
+const chalk = require('chalk');
 const fs = require('fs');
 const resolve = require('resolve');
 const path = require('path');
@@ -22,7 +22,9 @@ function writeJson(fileName, object) {
 }
 
 function verifyNoTypeScript() {
-  const typescriptFiles = globby(['**/*.(ts|tsx)', '!**/node_modules'], { cwd: paths.appSrc });
+  const typescriptFiles = globby(['**/*.(ts|tsx)', '!**/node_modules'], {
+    cwd: paths.appSrc,
+  });
   if (typescriptFiles.length > 0) {
     console.warn(
       chalk.yellow(
@@ -252,7 +254,7 @@ function verifyTypeScriptSetup() {
   if (!fs.existsSync(paths.appTypeDeclarations)) {
     fs.writeFileSync(
       paths.appTypeDeclarations,
-      `/// <reference types="react-scripts" />${os.EOL}`
+      `/// <reference types="kpmp-custom-react-scripts" />${os.EOL}`
     );
   }
 }
