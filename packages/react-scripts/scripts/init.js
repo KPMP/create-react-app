@@ -100,6 +100,7 @@ module.exports = function(
   appPackage.dependencies.history = '4.7.2';
   appPackage.dependencies.reactstrap = '6.5.0';
   appPackage.dependencies['react-router-dom'] = '4.3.1';
+  appPackage.dependencies.axios = '0.18.0';
   appPackage.devDependencies = {};
   appPackage.devDependencies['node-sass-chokidar'] = '1.3.4';
   appPackage.devDependencies['npm-run-all'] = '4.1.5';
@@ -196,7 +197,8 @@ module.exports = function(
     'reactstrap@6.5.0',
     'react-router-dom@4.3.1',
     'node-sass-chokidar@1.3.4',
-    'npm-run-all@4.1.5'
+    'npm-run-all@4.1.5',
+    'axios@0.18.0'
   );
 
   // Install additional template dependencies, if present
