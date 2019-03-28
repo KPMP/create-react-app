@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from './components/Nav/NavBar';
+import NavFooter from './components/Nav/NavFooter';
 import loadedState from './initialState';
 import { createStore, applyMiddleware } from 'redux';
 import appReducer from './reducers';
@@ -54,7 +55,7 @@ class App extends Component {
         <Router history={history}>
           <Container fluid>
             <NavBar />
-            <div id="main-page">
+            <div>
               <Row>
                 <Col>
                   <h2>Congrats on creating a new app for KPMP!</h2>
@@ -143,12 +144,19 @@ class App extends Component {
                     </li>
                     <li>
                       {' '}
+                      Determine whether we need a username in the header. If so,
+                      write a card to add it (and probably borrow code from
+                      orion-web to do so).
+                    </li>
+                    <li>
+                      {' '}
                       Have a drink and celebrate, we have a new web project!
                     </li>
                   </ul>
                 </Col>
               </Row>
             </div>
+            <NavFooter />
           </Container>
         </Router>
       </Provider>
