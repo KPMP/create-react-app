@@ -92,15 +92,15 @@ module.exports = function(
   // Copy over some of the devDependencies
   appPackage.dependencies = appPackage.dependencies || {};
   // **** Add new common packages here.  If the package has a dash in the name, you need to use bracket notation **** //
-  appPackage.dependencies.redux = '4.0.1';
-  appPackage.dependencies['bootstrap-css-only'] = '4.2.1';
-  appPackage.dependencies['react-ga'] = '2.5.6';
+  appPackage.dependencies['redux'] = '4.0.1';
+  appPackage.dependencies['bootstrap-css-only'] = '4.3.1';
+  appPackage.dependencies['react-ga'] = '2.5.7';
   appPackage.dependencies['react-redux'] = '5.1.1';
   appPackage.dependencies['redux-thunk'] = '2.3.0';
-  appPackage.dependencies.history = '4.7.2';
-  appPackage.dependencies.reactstrap = '6.5.0';
-  appPackage.dependencies['react-router-dom'] = '4.3.1';
-  appPackage.dependencies.axios = '0.18.0';
+  appPackage.dependencies['history'] = '4.9.0';
+  appPackage.dependencies['reactstrap'] = '7.1.0';
+  appPackage.dependencies['react-router-dom'] = '5.0.0';
+  appPackage.dependencies['axios'] = '0.18.0';
   appPackage.devDependencies = {};
   appPackage.devDependencies['node-sass-chokidar'] = '1.3.4';
   appPackage.devDependencies['npm-run-all'] = '4.1.5';
@@ -189,13 +189,13 @@ module.exports = function(
     'react',
     'react-dom',
     'redux@4.0.1',
-    'bootstrap-css-only@4.2.1',
-    'react-ga@2.5.6',
+    'bootstrap-css-only@4.3.1',
+    'react-ga@2.5.7',
     'react-redux@5.1.1',
     'redux-thunk@2.3.0',
-    'history@4.7.2',
-    'reactstrap@6.5.0',
-    'react-router-dom@4.3.1',
+    'history@4.9.0',
+    'reactstrap@7.1.0',
+    'react-router-dom@5.0.0',
     'node-sass-chokidar@1.3.4',
     'npm-run-all@4.1.5',
     'axios@0.18.0'
