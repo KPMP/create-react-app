@@ -21,7 +21,7 @@ For the standard README from create-react-app go [here](https://github.com/faceb
 All of the files that are created when you use this (except the package.json) live under packages/react-scripts/template
 Any changes to files in this section will produce a new default application.
 Be sure to note any changes in the CHANGELOG.md
-Publish your changes (see 'Publishing changes above)
+Publish your changes (see 'Publishing changes' above)
 Check your changes into git
 
 ## Changing default dependencies

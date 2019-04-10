@@ -1,3 +1,19 @@
+## 1.1.0 (March 29, 2019)
+
+Changes:
+
+- Added ErrorBoundary to capture errors and send user to Oops page
+- Added Oops page and routing
+- Moved the directions for a new project to a new component
+
+## 1.0.0 (March 28, 2019)
+
+Changes:
+
+- Update to several library versions to keep up to date
+- Updated the header to match the new styling
+- Added a KPMP footer
+
 ## 0.1.0 (January, 2019)
 
 v0.1.0 was created based on v2.1.3 from facebook (https://github.com/facebook/create-react-app)
