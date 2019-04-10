@@ -1,3 +1,9 @@
+## 1.1.2 (April 10, 2019)
+
+Changes:
+
+- Capturing some styling changes
+
 ## 1.1.0 (March 29, 2019)
 
 Changes:
