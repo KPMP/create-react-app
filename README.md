@@ -6,8 +6,6 @@ For the standard README from create-react-app go [here](https://github.com/faceb
 
 ## Using the custom react-scripts
 
-`sudo npm install -g kpmp-custom-react-scripts`
-
 `npx create-react-app <app-name> --scripts-version kpmp-custom-react-scripts`
 
 ## Publishing changes
